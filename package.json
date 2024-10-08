@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./src/server.ts",
     "dev": "ts-node-dev --transpile-only src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vercel-build":"npx prisma migrate deploy"
   },
   "engines": {
    "node": "20.x"
