@@ -6,10 +6,10 @@
     "start": "node ./src/server.ts",
     "dev": "ts-node-dev --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build":"npx prisma migrate deploy"
+    "vercel-build": "npx prisma migrate deploy"
   },
   "engines": {
-   "node": "20.x"
+    "node": "20.x"
   },
   "keywords": [],
   "author": "",
@@ -32,12 +32,14 @@
   },
   "dependencies": {
     "@prisma/client": "^5.20.0",
+    "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
+    "node-cache": "^5.1.2",
     "prisma": "^5.20.0"
   }
 }

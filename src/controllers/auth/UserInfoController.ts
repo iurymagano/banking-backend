@@ -8,7 +8,6 @@ class UserInfoController {
     const service = new UserInfoService();
 
     const { status, body } = await service.execute({ userId: Number(userId) });
-
     return res.status(status).json(body);
   }
 }

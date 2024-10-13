@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { RegisterAccountService } from '../../services/auth/RegisterAccountService';
+import { SignUpService } from '../../services/auth/SignUpService';
 
-class RegisterAccountController {
+class SignUpController {
   async handle(req: Request, res: Response): Promise<any> {
     const { name, email, password, document, type } = req.body;
 
-    const service = new RegisterAccountService();
+    const service = new SignUpService();
 
     const { status, body } = await service.execute({
       name,
@@ -18,4 +18,4 @@ class RegisterAccountController {
   }
 }
 
-export { RegisterAccountController };
+export { SignUpController };

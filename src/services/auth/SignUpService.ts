@@ -5,8 +5,9 @@ import { RegisterAccountRequest } from '../../models/auth';
 import { hash } from 'bcrypt';
 import { RegisterAccountIcaService } from '../ica/RegisterAccountIcaService';
 import { DataCreateAccount } from '../../models/ica';
-// import { RegisterAccountIcaService } from '../ica/RegisterAccountIcaService';
-class RegisterAccountService {
+import { sign } from 'jsonwebtoken';
+
+class SignUpService {
   async execute({
     name,
     email,
@@ -106,10 +107,19 @@ class RegisterAccountService {
         },
       });
 
+      const token = sign(
+        { id: user.id, email: user.email },
+        process.env.JWT_SECRET,
+        {
+          subject: user.id.toString(),
+          expiresIn: '30d',
+        },
+      );
+
       return responseApi({
         result: 'success',
         message: 'Usuário criado com sucesso.',
-        data: user,
+        data: { user, token },
       });
     } catch (error) {
       return responseApi({
@@ -121,4 +131,4 @@ class RegisterAccountService {
   }
 }
 
-export { RegisterAccountService };
+export { SignUpService };

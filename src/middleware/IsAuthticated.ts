@@ -1,15 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
+import { tokenManagerIca } from '../services/ica/TokenManagerIca';
 
 interface Payload {
   sub: string;
 }
 
-export function isAuthenticated(
+export async function isAuthenticated(
   req: Request,
   res: Response,
   next: NextFunction,
-): any {
+): Promise<any> {
   const authToken = req.headers.authorization;
 
   if (!authToken) {
