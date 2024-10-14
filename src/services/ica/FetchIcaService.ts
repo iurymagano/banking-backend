@@ -33,13 +33,7 @@ class FetchIcaService {
       return responseApi({
         status: 404,
         result: 'error',
-        message:
-          'Error connect to the API' +
-          'clientID' +
-          process.env.CLIENT_ID +
-          'clientSecret' +
-          process.env.CLIENT_SECRET +
-          process.env.API_SERVER_ICA,
+        message: 'Error connect to the API',
       });
     }
   }
