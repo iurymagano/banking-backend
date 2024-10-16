@@ -2,6 +2,10 @@
 
 Welcome to the Banking Backend project! This is the backend API for managing bank accounts, transactions, and user authentication.
 
+## Login to acess Adm
+email: adm@email.com
+password: Bank123@
+
 ## Live Deployment
 
 If you would like to see the live deployment of the backend, you can visit the following URL: [Banking Backend Live](https://banking-backend-xi.vercel.app/)
