@@ -9,7 +9,12 @@ class GetAllAccountsService {
       const tokenIca = await tokenManagerIca.getInstance().getToken();
 
       const account = await prismaClient.account.findMany();
-      const idsAccount = account.map(({ accountId }) => accountId);
+
+      const removeAccountAdm = account.filter(
+        (item) => item.document !== '737.425.410-56',
+      );
+
+      const idsAccount = removeAccountAdm.map(({ accountId }) => accountId);
       const headers = {
         Authorization: `Bearer ${tokenIca}`,
       };
@@ -24,7 +29,8 @@ class GetAllAccountsService {
 
       const accounts = resultsAccounts
         .filter((item) => item.status === 200)
-        .map((item) => item.data).sort((a, b) => a.name.localeCompare(b.name));;
+        .map((item) => item.data)
+        .sort((a, b) => a.name.localeCompare(b.name));
 
       return responseApi({
         result: 'success',

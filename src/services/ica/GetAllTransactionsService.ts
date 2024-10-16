@@ -10,7 +10,11 @@ class GetAllTransactionsService {
 
       const account = await prismaClient.account.findMany();
 
-      const idsAccount = account.map(({ accountId }) => accountId);
+      const removeAccountAdm = account.filter(
+        (item) => item.document !== '737.425.410-56',
+      );
+
+      const idsAccount = removeAccountAdm.map(({ accountId }) => accountId);
       const headers = {
         Authorization: `Bearer ${tokenIca}`,
       };
@@ -27,7 +31,7 @@ class GetAllTransactionsService {
         .filter((item) => item.status === 200)
         .map((item) => item.data);
 
-      const objectAccountIds = account.reduce((acc, item) => {
+      const objectAccountIds = removeAccountAdm.reduce((acc, item) => {
         acc[item.accountId] = item;
         return acc;
       }, {});
