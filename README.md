@@ -2,7 +2,7 @@
 
 Welcome to the Banking Backend project! This is the backend API for managing bank accounts, transactions, and user authentication.
 
-## Login to acess Adm
+## Login to access Adm
 email: adm@email.com
 password: Bank123@
 
